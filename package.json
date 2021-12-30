@@ -17,7 +17,9 @@
   },
   "homepage": "https://github.com/taruvar-mittal/YelpCamp#readme",
   "dependencies": {
+    "axios": "^0.24.0",
     "ejs": "^3.1.6",
+    "ejs-mate": "^3.0.0",
     "express": "^4.17.2",
     "method-override": "^3.0.0",
     "mongoose": "^6.1.4",
