@@ -18,19 +18,19 @@ db.once('open', () => {
 const sample = array => array[Math.floor(Math.random()*array.length)];
 
 
-async function seedImg() {
-    try {
-      const resp = await axios.get('https://api.unsplash.com/photos/random', {
-        params: {
-          client_id: 'Imvi7PbQVIRLCyIkwYLGuF9GAP6Ui3S3nz75aSbkpXc',
-          collections: 1114848,
-        },
-      })
-      return resp.data.urls.small
-    } catch (err) {
-      console.error(err)
-    }
-  }
+// async function seedImg() {
+//     try {
+//       const resp = await axios.get('https://api.unsplash.com/photos/random', {
+//         params: {
+//           client_id: 'Imvi7PbQVIRLCyIkwYLGuF9GAP6Ui3S3nz75aSbkpXc',
+//           collections: 1114848,
+//         },
+//       })
+//       return resp.data.urls.small
+//     } catch (err) {
+//       console.error(err)
+//     }
+//   }
 
 const seedDB = async () => {
     await Campground.deleteMany();
@@ -42,7 +42,16 @@ const seedDB = async () => {
             author : '61d455938595c96a79f42b51',
             title : `${sample(descriptors)} ${sample(places)}`,
             location : `${cities[random1000].city}, ${cities[random1000].state}`,
-            image : await seedImg(),
+            images :  [
+              {
+                url: 'https://res.cloudinary.com/dqyo2bqke/image/upload/v1641447339/YelpCamp/fpe9l3azw7g66we2dtlg.jpg',
+                filename: 'YelpCamp/fpe9l3azw7g66we2dtlg',
+              },
+              {
+                url: 'https://res.cloudinary.com/dqyo2bqke/image/upload/v1641447345/YelpCamp/ia4s5twazygxu09e6isg.jpg',
+                filename: 'YelpCamp/ia4s5twazygxu09e6isg',
+              }
+            ],
             price,
             description : 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ratione nostrum dolores facere! Dolore eveniet molestiae omnis laborum adipisci tenetur, reprehenderit corporis aliquid, excepturi voluptatibus alias deserunt ab debitis ullam quaerat ipsa cupiditate sunt, aperiam veritatis. Iusto dignissimos sint voluptate numquam, sed inventore, totam expedita possimus tempora perspiciatis accusantium, sequi consequatur!'
         })
