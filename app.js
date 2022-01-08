@@ -1,6 +1,6 @@
-if (process.env.NODE_ENV !== "production") {
+// if (process.env.NODE_ENV !== "production") {
     require('dotenv').config();
-}
+// }
 
 const express = require('express');
 const path = require('path');
@@ -13,6 +13,9 @@ const flash = require('connect-flash');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
 const User = require('./models/user');
+// const helmet = require('helmet');
+
+const expressMongoSanitize = require('express-mongo-sanitize');
 
 const userRoutes = require('./routes/users');
 const campgroundRoutes = require('./routes/campgrounds');
@@ -38,6 +41,8 @@ app.use(express.static(path.join(__dirname,'public')));
 
 app.use(express.urlencoded({ extended : true }));
 app.use(methodOverride('_method'));
+app.use(expressMongoSanitize());
+// app.use(helmet());
 
 const sessionConfig = {
     secret : 'thisshouldbemysecret',
