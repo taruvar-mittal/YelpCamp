@@ -27,7 +27,7 @@ const reviewRoutes = require('./routes/reviews');
 //mongodb://localhost:27017/yelp-camp-v2
 //dbUrl
 
-mongoose.connect(dbUrl,{
+mongoose.connect('mongodb+srv://taruvar:Taruvar07*@cluster0.phax5.mongodb.net/myFirstDatabase?retryWrites=true&w=majorityretryWrites=true&w=majority',{
     useNewUrlParser : true,
     useUnifiedTopology : true,
 });
