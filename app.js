@@ -50,6 +50,7 @@ app.use(methodOverride('_method'));
 app.use(expressMongoSanitize());
 // app.use(helmet());
 
+
 const secret = process.env.SECRET || 'thisshouldbemysecret';
 
 const store = new MongoStore({
