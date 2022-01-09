@@ -27,7 +27,7 @@ const reviewRoutes = require('./routes/reviews');
 //mongodb://localhost:27017/yelp-camp-v2
 //dbUrl
 
-mongoose.connect('mongodb+srv://taruvar:Taruvar07*@cluster0.phax5.mongodb.net/myFirstDatabase?retryWrites=true&w=majorityretryWrites=true&w=majority',{
+mongoose.connect(dbUrl,{
     useNewUrlParser : true,
     useUnifiedTopology : true,
 });
@@ -102,16 +102,16 @@ app.get('/fakeUser',async(req,res) => {
 })
 
 
-app.get('/', (req,res) => {
-    res.render('Home');
-})
+
 
 app.use('/', userRoutes);
 app.use('/campgrounds', campgroundRoutes)
 app.use('/campgrounds/:id/reviews', reviewRoutes)
 
 
-
+app.get('/', (req,res) => {
+    res.render('Home');
+})
 
 
 
